@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SimpleSnake.GameObjects
 {
-    public class Snake : Point
+    public class Snake
     {
         private Queue<Point> snake;
         private Food[] foods;
@@ -20,7 +20,6 @@ namespace SimpleSnake.GameObjects
       
 
         public Snake(Wall wall)
-            : base(0, 0)
         {
             this.wall = wall;
             this.snake = new Queue<Point>();
@@ -52,25 +51,14 @@ namespace SimpleSnake.GameObjects
             this.nextTopY = snakeHead.TopY + direction.TopY;
 
         }
-        public bool IsPointOfWall(Point snake)
-            => 
-               snake.TopY == 0 
-            || snake.LeftX == 0 
-            || snake.LeftX == this.LeftX - 1
-            || snake.TopY == this.TopY;   
+       
 
         public bool IsMoving(Point direction)
         {
             Point currentSnakeHead = this.snake.Last();
             this.GetNextPoint(direction, currentSnakeHead);
 
-            bool isPointOfWall = this.IsPointOfWall(currentSnakeHead);
-
-            if (isPointOfWall)
-            {
-                return false;
-            }
-            Point snakeNewHead = new Point(this.nextLeftX, this.nextTopY);
+           
             bool isPointOfSnake = this.snake.Any(x => x.LeftX == this.nextLeftX && x.TopY == this.nextTopY);
 
             if (isPointOfSnake)
@@ -78,7 +66,16 @@ namespace SimpleSnake.GameObjects
                 return false;
             }
 
+            Point snakeNewHead = new Point(this.nextLeftX, this.nextTopY);
+            bool isPointOfWall = this.wall.IsPointOfWall(snakeNewHead);
+
+            if (isPointOfWall)
+            {
+                return false;
+            }
+
             this.snake.Enqueue(snakeNewHead);
+
             snakeNewHead.Draw(snakeSymbol);
 
             if (foods[foodIndex].IsFoodPoint(snakeNewHead))
@@ -87,6 +84,7 @@ namespace SimpleSnake.GameObjects
             }
             Point snakeTail = this.snake.Dequeue();
             snakeTail.Draw(' ');
+
             return true;
         }
 
