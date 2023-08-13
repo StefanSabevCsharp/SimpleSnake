@@ -43,5 +43,8 @@ namespace SimpleSnake.GameObjects
             this.Draw(foodSymbol);
             Console.BackgroundColor = ConsoleColor.White;
         }
+
+        public bool IsFoodPoint(Point snakeNewHead)
+        => snakeNewHead.LeftX == this.LeftX && snakeNewHead.TopY == this.TopY;
     }
 }

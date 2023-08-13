@@ -4,7 +4,7 @@
     {
         private const char charSybol = '#';
         private const int points = 3;
-        protected FoodHash(Wall wall)
+        public FoodHash(Wall wall)
             : base(wall, charSybol, points)
         {
         }
