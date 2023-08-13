@@ -6,45 +6,51 @@ using System.Threading.Tasks;
 
 namespace SimpleSnake.GameObjects
 {
-    public class Food : Point
+    public abstract class Food : Point
     {
-        
-        private Random random;
-        private Wall wall;
-        private char foodSymbol;
+        private readonly Wall wall;
+        private readonly char foodSymbol;
+        private readonly Random random;
 
-        protected Food(Wall wall, char foodSymbol,int points)
-            : base(0,0)
+        protected Food(Wall wall, char foodSymbol, int points)
+            : base(wall.LeftX, wall.TopY)
         {
             this.wall = wall;
-            this.random = new Random();
             this.foodSymbol = foodSymbol;
             this.FoodPoints = points;
+
+            this.random = new Random();
         }
 
-        public int FoodPoints { get; private set; }
+        public int FoodPoints { get; }
 
         public void SetRandomPosition(Queue<Point> snakeElements)
         {
-           this.LeftX = this.random.Next(2, this.wall.LeftX - 2);
+            this.LeftX = this.random.Next(2, this.wall.LeftX - 2);
             this.TopY = this.random.Next(2, this.wall.TopY - 2);
 
-            bool isPointOfSnake = snakeElements.Any(x => x.LeftX == this.LeftX && x.TopY == this.TopY);
+            bool isPointOfSnake = IsPointOfSnake(snakeElements);
 
             while (isPointOfSnake)
             {
-                  this.LeftX = this.random.Next(2, this.wall.LeftX - 2);
+                this.LeftX = this.random.Next(2, this.wall.LeftX - 2);
                 this.TopY = this.random.Next(2, this.wall.TopY - 2);
 
-                isPointOfSnake = snakeElements.Any(x => x.LeftX == this.LeftX && x.TopY == this.TopY);
+                isPointOfSnake = IsPointOfSnake(snakeElements);
             }
 
-            Console.BackgroundColor = ConsoleColor.Red;
             this.Draw(foodSymbol);
-            Console.BackgroundColor = ConsoleColor.White;
+        }
+        public bool IsFoodPoint(Point snake)
+        {
+            return this.LeftX == snake.LeftX &&
+                   this.TopY == snake.TopY;
         }
 
-        public bool IsFoodPoint(Point snakeNewHead)
-        => snakeNewHead.LeftX == this.LeftX && snakeNewHead.TopY == this.TopY;
+        private bool IsPointOfSnake(Queue<Point> snakeElements)
+        {
+            return snakeElements
+                .Any(x => x.TopY == this.TopY && x.LeftX == this.LeftX);
+        }
     }
 }

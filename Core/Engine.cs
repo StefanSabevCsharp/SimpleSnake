@@ -11,21 +11,23 @@ namespace SimpleSnake.Core
 {
     public class Engine
     {
+        private readonly Point[] pointsOfDirection;
         private Direction direction;
-        private Point[] pointsOfDirections;
-        private Snake snake;
-        private Wall wall;
+        private readonly Snake snake;
+        private readonly Wall wall;
         private double sleepTime;
 
-        public Engine(Wall wall,Snake snake)
-
+        public Engine(Snake snake, Wall wall)
         {
-            this.wall = wall;
             this.snake = snake;
+            this.wall = wall;
+
+            this.pointsOfDirection = new Point[4];
+            this.direction = Direction.Right;
+
             this.sleepTime = 100;
-            this.pointsOfDirections = new Point[4];
-          
         }
+
         public void Run()
         {
             this.CreateDirections();
@@ -36,7 +38,8 @@ namespace SimpleSnake.Core
                 {
                     this.GetNextDirection();
                 }
-                bool isMoving = this.snake.IsMoving(this.pointsOfDirections[(int)this.direction]);
+
+                bool isMoving = this.snake.IsMoving(this.pointsOfDirection[(int)direction]);
 
                 if (!isMoving)
                 {
@@ -44,45 +47,39 @@ namespace SimpleSnake.Core
                 }
 
                 sleepTime -= 0.01;
+
                 Thread.Sleep((int)sleepTime);
             }
-            
         }
+
 
         private void AskUserForRestart()
         {
             int leftX = this.wall.LeftX + 2;
             int topY = 3;
 
-            Console.SetCursorPosition(leftX, topY); 
+            Console.SetCursorPosition(leftX, topY);
             Console.Write("Would you like to continue? y/n");
-            Console.SetCursorPosition(leftX, topY + 1);
+
             string input = Console.ReadLine();
-            if(input == "y")
+
+            if (input == "y")
             {
                 Console.Clear();
                 StartUp.Main();
             }
             else
             {
-                StopGame();
+                Environment.Exit(0);
             }
-        }
-
-        private void StopGame()
-        {
-            Console.SetCursorPosition(20, 10);
-            Console.Write("Game Over!");
-            Environment.Exit(0);
         }
 
         private void CreateDirections()
         {
-            this.pointsOfDirections[0] = new Point(1, 0);
-            this.pointsOfDirections[1] = new Point(-1, 0);
-            this.pointsOfDirections[2] = new Point(0, 1);
-            this.pointsOfDirections[3] = new Point(0, -1);
-
+            this.pointsOfDirection[0] = new Point(1, 0);
+            this.pointsOfDirection[1] = new Point(-1, 0);
+            this.pointsOfDirection[2] = new Point(0, 1);
+            this.pointsOfDirection[3] = new Point(0, -1);
         }
 
         private void GetNextDirection()
@@ -91,33 +88,35 @@ namespace SimpleSnake.Core
 
             if (userInput.Key == ConsoleKey.LeftArrow)
             {
-                if (this.direction != Direction.Right)
+                if (direction != Direction.Right)
                 {
-                    this.direction = Direction.Left;
+                    direction = Direction.Left;
                 }
             }
             else if (userInput.Key == ConsoleKey.RightArrow)
             {
-                if (this.direction != Direction.Left)
+                if (direction != Direction.Left)
                 {
-                    this.direction = Direction.Right;
+                    direction = Direction.Right;
                 }
             }
             else if (userInput.Key == ConsoleKey.UpArrow)
             {
-                if (this.direction != Direction.Down)
+                if (direction != Direction.Down)
                 {
-                    this.direction = Direction.Up;
+                    direction = Direction.Up;
                 }
             }
             else if (userInput.Key == ConsoleKey.DownArrow)
             {
-                if (this.direction != Direction.Up)
+                if (direction != Direction.Up)
                 {
-                    this.direction = Direction.Down;
+                    direction = Direction.Down;
                 }
             }
+
             Console.CursorVisible = false;
         }
     }
 }
+

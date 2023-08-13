@@ -1,5 +1,4 @@
-﻿
-namespace SimpleSnake.Utilities
+﻿namespace SimpleSnake.Utilities
 {
     using System;
     using System.Text;

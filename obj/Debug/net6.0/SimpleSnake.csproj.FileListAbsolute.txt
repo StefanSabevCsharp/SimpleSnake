@@ -1,0 +1,15 @@
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\bin\Debug\net6.0\SimpleSnake.exe
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\bin\Debug\net6.0\SimpleSnake.deps.json
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\bin\Debug\net6.0\SimpleSnake.runtimeconfig.json
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\bin\Debug\net6.0\SimpleSnake.dll
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\bin\Debug\net6.0\SimpleSnake.pdb
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\SimpleSnake.csproj.AssemblyReference.cache
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\SimpleSnake.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\SimpleSnake.AssemblyInfoInputs.cache
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\SimpleSnake.AssemblyInfo.cs
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\SimpleSnake.csproj.CoreCompileInputs.cache
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\SimpleSnake.dll
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\refint\SimpleSnake.dll
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\SimpleSnake.pdb
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\SimpleSnake.genruntimeconfig.cache
+C:\Users\steve\source\repos\12. Csharp-OOP-Snake-Workshop-SimpleSnake-Skeleton_6.0\SimpleSnake\obj\Debug\net6.0\ref\SimpleSnake.dll
